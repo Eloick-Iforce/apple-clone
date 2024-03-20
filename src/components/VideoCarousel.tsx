@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable @ts-nocheck  */
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
