@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
@@ -21,7 +23,7 @@ const VideoCarousel = () => {
     isPlaying: false,
   });
 
-  const [loadedData, setLoadedData] = useState<HTMLVideoElement[]>([]);
+  const [loadedData, setLoadedData] = useState([]);
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
 
   useGSAP(() => {
@@ -59,7 +61,7 @@ const VideoCarousel = () => {
           // get the progress of the video
           const progress = Math.ceil(anim.progress() * 100);
 
-          if (progress !== currentProgress) {
+          if (progress != currentProgress) {
             currentProgress = progress;
 
             // set the width of the progress bar
@@ -93,7 +95,7 @@ const VideoCarousel = () => {
         },
       });
 
-      if (videoId === 0) {
+      if (videoId == 0) {
         anim.restart();
       }
 
@@ -118,17 +120,18 @@ const VideoCarousel = () => {
   useEffect(() => {
     if (loadedData.length > 3) {
       if (!isPlaying) {
-        videoRef.current[videoId]?.pause();
+        videoRef.current[videoId].pause();
       } else {
-        startPlay && videoRef.current[videoId]?.play();
+        startPlay && videoRef.current[videoId].play();
       }
     }
   }, [startPlay, videoId, isPlaying, loadedData]);
 
-  const handleProcess = (type: string, i?: number) => {
+  // vd id is the id for every video until id becomes number 3
+  const handleProcess = (type, i) => {
     switch (type) {
       case "video-end":
-        setVideo((pre) => ({ ...pre, isEnd: true, videoId: i! + 1 }));
+        setVideo((pre) => ({ ...pre, isEnd: true, videoId: i + 1 }));
         break;
 
       case "video-last":
@@ -152,10 +155,7 @@ const VideoCarousel = () => {
     }
   };
 
-  const handleLoadedMetaData = (
-    i: number,
-    e: React.SyntheticEvent<HTMLVideoElement, Event>
-  ) => setLoadedData((pre) => [...pre, e.currentTarget]);
+  const handleLoadedMetaData = (i, e) => setLoadedData((pre) => [...pre, e]);
 
   return (
     <>
