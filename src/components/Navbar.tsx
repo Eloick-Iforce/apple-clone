@@ -9,7 +9,7 @@ const Navbar = () => {
       <nav className="flex w-full screen-max-width">
         <img src={appleImg} alt="Apple logo" width={14} height={18} />
         <div className="flex flex-1 justify-center max-sm:hidden">
-          {navLists.map((item, index) => (
+          {navLists.map((item: string, index: number) => (
             <div
               key={index}
               className="px-5 text-sm cursor-pointer text-gray hover:text-white transition-all"
