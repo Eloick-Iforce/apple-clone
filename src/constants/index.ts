@@ -93,8 +93,8 @@ export interface Size {
 }
 
 export const sizes: Size[] = [
-  { label: '6.1"', value: "petit" },
-  { label: '6.7"', value: "grand" },
+  { label: '6.1"', value: "small" },
+  { label: '6.7"', value: "large" },
 ];
 
 export const footerLinks: string[] = [
